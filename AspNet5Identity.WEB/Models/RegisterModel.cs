@@ -17,6 +17,7 @@ namespace AspNet5Identity.WEB.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        [DataType(DataType.MultilineText)]
         public string AboutMe { get; set; }
     }
 }

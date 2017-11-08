@@ -1,0 +1,39 @@
+﻿@model AspNet5Identity.WEB.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h4>New user registration</h4>
+        <hr />
+        @Html.ValidationSummary(false)
+        <div>Email
+            <div>@Html.EditorFor(model => model.Email)</div>
+        </div>
+        <div>First name
+            <div>@Html.EditorFor(model => model.FirstName)</div>
+        </div>
+        <div>Last name
+            <div>@Html.EditorFor(model => model.LastName)</div>
+        </div>
+        <div>Password
+            <div>@Html.EditorFor(model => model.Password)</div>
+        </div>
+        <div>Confirm Password
+            <div>@Html.EditorFor(model => model.ConfirmPassword)</div>
+        </div>
+        <div>About me
+            <div>@Html.TextAreaFor(model => model.AboutMe)</div>
+        </div>
+        <div>
+            <div><input type="submit" value="Register" /></div>
+        </div>
+    </div>
+}

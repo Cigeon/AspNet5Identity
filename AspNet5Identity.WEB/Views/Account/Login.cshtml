@@ -1,0 +1,31 @@
+﻿@model AspNet5Identity.WEB.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary()
+        @*<input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />*@
+        <p>
+            <label>Email</label><br />
+            @Html.EditorFor(x => x.Email)
+        </p>
+        <p>
+            <label>Password</label><br />
+            @Html.EditorFor(x => x.Password)
+        </p>        
+        <p>
+            <button type="submit">Login</button>
+        </p>
+        <p>
+            @Html.ActionLink("Registration", "Register", "Account")
+        </p>
+    </div>
+}
