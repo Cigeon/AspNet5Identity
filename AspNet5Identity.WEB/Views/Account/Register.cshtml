@@ -6,34 +6,56 @@
 
 <h2>Register</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h4>New user registration.</h4>
+    <hr />
 
     <div>
-        <h4>New user registration</h4>
-        <hr />
-        @Html.ValidationSummary(false)
-        <div>Email
-            <div>@Html.EditorFor(model => model.Email)</div>
+        
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
         </div>
-        <div>First name
-            <div>@Html.EditorFor(model => model.FirstName)</div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
         </div>
-        <div>Last name
-            <div>@Html.EditorFor(model => model.LastName)</div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
         </div>
-        <div>Password
-            <div>@Html.EditorFor(model => model.Password)</div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
         </div>
-        <div>Confirm Password
-            <div>@Html.EditorFor(model => model.ConfirmPassword)</div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
         </div>
-        <div>About me
-            <div>@Html.TextAreaFor(model => model.AboutMe)</div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AboutMe, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.AboutMe, new { @class = "form-control" })
+            </div>
         </div>
-        <div>
-            <div><input type="submit" value="Register" /></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
         </div>
     </div>
 }

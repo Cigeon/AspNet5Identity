@@ -84,8 +84,7 @@ namespace AspNet5Identity.WEB.Controllers
                 };
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
-                    RedirectToAction("Index", "Home");
-                //return View("SuccessRegister");
+                    return RedirectToAction("Login", "Account");
                 else
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
