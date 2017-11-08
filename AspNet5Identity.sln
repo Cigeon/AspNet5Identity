@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet5Identity.WEB", "AspN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet5Identity.DAL", "AspNet5Identity.DAL\AspNet5Identity.DAL.csproj", "{40545075-CD61-45D2-B761-ADC6D1D84AA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet5Identity.BLL", "AspNet5Identity.BLL\AspNet5Identity.BLL.csproj", "{A13D13FF-BB72-4FAA-8173-90FBC3A3AD6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{40545075-CD61-45D2-B761-ADC6D1D84AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40545075-CD61-45D2-B761-ADC6D1D84AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40545075-CD61-45D2-B761-ADC6D1D84AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A13D13FF-BB72-4FAA-8173-90FBC3A3AD6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13D13FF-BB72-4FAA-8173-90FBC3A3AD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13D13FF-BB72-4FAA-8173-90FBC3A3AD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13D13FF-BB72-4FAA-8173-90FBC3A3AD6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
