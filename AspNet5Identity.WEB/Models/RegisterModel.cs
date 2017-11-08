@@ -20,6 +20,10 @@ namespace AspNet5Identity.WEB.Models
         [Required]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"\+?\d+", ErrorMessage = "Invalid Phone number")]
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
         [DataType(DataType.MultilineText)]
         [Display(Name = "About me")]
         public string AboutMe { get; set; }

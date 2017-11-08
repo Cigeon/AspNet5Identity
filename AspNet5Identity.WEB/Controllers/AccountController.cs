@@ -66,6 +66,12 @@ namespace AspNet5Identity.WEB.Controllers
             return View();
         }
 
+        [Authorize]
+        public ActionResult Manage()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
@@ -79,6 +85,7 @@ namespace AspNet5Identity.WEB.Controllers
                     Password = model.Password,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
                     AboutMe = model.AboutMe,
                     Role = "user"
                 };

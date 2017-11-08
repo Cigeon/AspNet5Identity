@@ -14,6 +14,7 @@ namespace AspNet5Identity.BLL.DTO
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
         public string AboutMe { get; set; }
         public string Role { get; set; }
     }
