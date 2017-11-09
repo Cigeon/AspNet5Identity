@@ -10,6 +10,7 @@ namespace AspNet5Identity.BLL.Interfaces
     public interface IUserService : IDisposable
     {
         Task<OperationDetails> Create(UserDTO userDto);
+        Task<UserShortDTO> GetUserShortByEmail(string email);
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         Task SetInitialData(UserDTO adminDto, List<string> roles);
     }

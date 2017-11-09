@@ -54,6 +54,23 @@ namespace AspNet5Identity.BLL.Services
             }
         }
 
+        public async Task<UserShortDTO> GetUserShortByEmail(string email)
+        {
+            ApplicationUser appUser = await Database.UserManager.FindByEmailAsync(email);
+            var user = new UserShortDTO
+            {
+
+                Id = appUser.Id,
+                Email = appUser.Email,
+                FirstName = appUser.ClientProfile.FirstName,
+                LastName = appUser.ClientProfile.LastName,
+                PhoneNumber = appUser.PhoneNumber,
+                AboutMe = appUser.ClientProfile.AboutMe
+            };
+            return user;
+
+        }
+
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
         {
             ClaimsIdentity claim = null;

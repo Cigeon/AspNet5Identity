@@ -2,6 +2,7 @@
 using AspNet5Identity.BLL.Inftastructure;
 using AspNet5Identity.BLL.Interfaces;
 using AspNet5Identity.WEB.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Collections.Generic;
@@ -67,9 +68,20 @@ namespace AspNet5Identity.WEB.Controllers
         }
 
         [Authorize]
-        public ActionResult Manage()
+        public async Task<ActionResult> Details()
         {
-            return View();
+            var userEmail = User.Identity.GetUserName();
+            var user = await UserService.GetUserShortByEmail(userEmail);
+            var model = new ManageModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                AboutMe = user.AboutMe
+            };
+            return View(model);
         }
 
         [HttpPost]

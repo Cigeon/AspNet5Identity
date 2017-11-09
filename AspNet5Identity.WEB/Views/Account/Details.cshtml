@@ -1,0 +1,38 @@
+﻿@model AspNet5Identity.WEB.Models.ManageModel
+
+@{
+    ViewBag.Title = "Account";
+}
+
+<h2>Account</h2>
+
+@using (Html.BeginForm())
+{
+    <h4>Account details.</h4>
+    <hr />
+
+    <div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @readonly = "readonly", @Name = "" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @readonly = "readonly", @Name = "" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @readonly = "readonly", @Name = "" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @readonly = "readonly", @Name = "" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AboutMe, new { @class = "col-md-2 control-label" })
+            @Html.TextAreaFor(m => m.AboutMe, new { @class = "form-control", @readonly = "readonly", @Name = "" })
+        </div>
+    </div>
+}
+
+
