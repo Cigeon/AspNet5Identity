@@ -72,7 +72,7 @@ namespace AspNet5Identity.WEB.Controllers
         {
             var userEmail = User.Identity.GetUserName();
             var user = await UserService.GetUserShortByEmail(userEmail);
-            var model = new ManageModel
+            var model = new DetailModel
             {
                 Id = user.Id,
                 Email = user.Email,

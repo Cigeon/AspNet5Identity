@@ -2,7 +2,7 @@
 
 namespace AspNet5Identity.WEB.Models
 {
-    public class ManageModel
+    public class DetailModel
     {
         public string Id { get; set; }
         public string Email { get; set; }

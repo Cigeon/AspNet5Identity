@@ -71,6 +71,28 @@ namespace AspNet5Identity.BLL.Services
 
         }
 
+        public async Task<List<UserShortDTO>> GetUsersShort(string sort = "", string search = "")
+        {
+            return await Task.Run(() =>
+            {
+                var appUsers = Database.UserManager.Users.ToList();
+                var users = new List<UserShortDTO>();
+                foreach (var user in appUsers)
+                {
+                    users.Add(new UserShortDTO
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        FirstName = user.ClientProfile.FirstName,
+                        LastName = user.ClientProfile.LastName,
+                        PhoneNumber = user.PhoneNumber,
+                        AboutMe = user.ClientProfile.AboutMe
+                    });
+                }
+                return users;
+            });
+        }
+        
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
         {
             ClaimsIdentity claim = null;

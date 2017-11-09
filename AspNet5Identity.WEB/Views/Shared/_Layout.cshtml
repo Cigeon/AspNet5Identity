@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - ASP.NET 5 Identity</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,8 +23,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Users", "Users", "Admin")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

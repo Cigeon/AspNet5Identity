@@ -1,0 +1,11 @@
+﻿@model IEnumerable<AspNet5Identity.WEB.Models.DetailModel>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+
+<div id="users-table">
+    @Html.Partial("_UsersTable", Model)    
+</div>
