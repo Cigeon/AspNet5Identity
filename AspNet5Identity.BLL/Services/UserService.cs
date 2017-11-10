@@ -71,11 +71,18 @@ namespace AspNet5Identity.BLL.Services
 
         }
 
-        public async Task<List<UserShortDTO>> GetUsersShort(string sort = "", string search = "")
+        public async Task<List<UserShortDTO>> GetUsersShort(string search = "", string sort = "" )
         {
             return await Task.Run(() =>
             {
-                var appUsers = Database.UserManager.Users.ToList();
+                var appUsers = Database.UserManager.Users
+                    .Where(u => string.IsNullOrEmpty(search) 
+                        || (u.ClientProfile.FirstName.Contains(search)) 
+                        || (u.ClientProfile.LastName.Contains(search)) 
+                        || (u.Email.Contains(search)) 
+                        || (u.PhoneNumber.Contains(search)))
+                    .ToList();
+
                 var users = new List<UserShortDTO>();
                 foreach (var user in appUsers)
                 {
@@ -89,7 +96,39 @@ namespace AspNet5Identity.BLL.Services
                         AboutMe = user.ClientProfile.AboutMe
                     });
                 }
-                return users;
+
+                var sortUsers = new List<UserShortDTO>();
+                switch (sort)
+                {
+                    case "FirstName":
+                        sortUsers = users.OrderBy(o => o.FirstName).ToList();
+                        break;
+                    case "FirstName_DSC":
+                        sortUsers = users.OrderByDescending(o => o.FirstName).ToList();
+                        break;
+                    case "LastName":
+                        sortUsers = users.OrderBy(o => o.LastName).ToList();
+                        break;
+                    case "LastName_DSC":
+                        sortUsers = users.OrderByDescending(o => o.LastName).ToList();
+                        break;
+                    case "Email":
+                        sortUsers = users.OrderBy(o => o.Email).ToList();
+                        break;
+                    case "Email_DSC":
+                        sortUsers = users.OrderByDescending(o => o.Email).ToList();
+                        break;
+                    case "PhoneNumber":
+                        sortUsers = users.OrderBy(o => o.PhoneNumber).ToList();
+                        break;
+                    case "PhoneNumber_DSC":
+                        sortUsers = users.OrderByDescending(o => o.PhoneNumber).ToList();
+                        break;
+                    default:
+                        sortUsers = users.OrderBy(o => o.FirstName).ToList();
+                        break;
+                }
+                return sortUsers;
             });
         }
         

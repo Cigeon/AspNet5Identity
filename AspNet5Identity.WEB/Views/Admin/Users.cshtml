@@ -5,7 +5,33 @@
 }
 
 <h2>Users</h2>
+<hr />
+
+@using (Ajax.BeginForm("FindUsersAjax", new AjaxOptions { UpdateTargetId = "users-table" }))
+{
+    <div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="search" />
+            </div>
+            <div class="col-md-2">
+                <input class="btn btn-default" type="submit" value="Search" />
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<br />
+<br />
 
 <div id="users-table">
-    @Html.Partial("_UsersTable", Model)    
+    @Html.Partial("_UsersTable", Model)
 </div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+

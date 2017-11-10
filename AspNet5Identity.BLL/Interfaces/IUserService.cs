@@ -11,7 +11,7 @@ namespace AspNet5Identity.BLL.Interfaces
     {
         Task<OperationDetails> Create(UserDTO userDto);
         Task<UserShortDTO> GetUserShortByEmail(string email);
-        Task<List<UserShortDTO>> GetUsersShort(string sort = "", string search = "");
+        Task<List<UserShortDTO>> GetUsersShort(string search = "", string sort = "");
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         Task SetInitialData(UserDTO adminDto, List<string> roles);
     }

@@ -1,21 +1,17 @@
 ﻿@model IEnumerable<AspNet5Identity.WEB.Models.DetailModel>
 
 <table class="table">
+
     <thead>
         <tr>
-            <th>@Ajax.ActionLink("First name", "UsersAjax", new { sort = ViewBag.FirstName }, 
+            <th>@Ajax.ActionLink("First name", "SortUsersAjax", new { sort = ViewBag.FirstName }, 
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-            <th>@Ajax.ActionLink("Last name", "UsersAjax", new { sort = ViewBag.LastName }, 
+            <th>@Ajax.ActionLink("Last name", "SortUsersAjax", new { sort = ViewBag.LastName }, 
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-            <th>@Ajax.ActionLink("Email", "UsersAjax", new { sort = ViewBag.Email },
+            <th>@Ajax.ActionLink("Email", "SortUsersAjax", new { sort = ViewBag.Email },
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-            <th>@Ajax.ActionLink("Phone number", "UsersAjax", new { sort = ViewBag.PhoneNumber },
+            <th>@Ajax.ActionLink("Phone number", "SortUsersAjax", new { sort = ViewBag.PhoneNumber },
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-
-            @*<th>@Html.ActionLink("First name", "Users", new { sort = ViewBag.FirstName })</th>
-            <th>@Html.ActionLink("Last name", "Users", new { sort = ViewBag.LastName })</th>
-            <th>@Html.ActionLink("Email", "Users", new { sort = ViewBag.Email })</th>
-            <th>@Html.ActionLink("Phone number", "Users", new { sort = ViewBag.PhoneNumber })</th>*@
         </tr>
     </thead>
 
@@ -29,7 +25,6 @@
                 <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
             </tr>
         }
-    </tbody>
-    
+    </tbody>    
 
 </table>

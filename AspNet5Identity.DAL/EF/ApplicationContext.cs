@@ -6,7 +6,7 @@ namespace AspNet5Identity.DAL.EF
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationContext(string conectionString) : base(conectionString) { }
+        public ApplicationContext(string conectionString) : base(conectionString) {  }
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }
     }
