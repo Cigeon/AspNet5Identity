@@ -24,40 +24,27 @@ namespace AspNet5Identity.WEB.Controllers
             ViewBag.LastName = "LastName_DSC";
             ViewBag.Email = "Email_DSC";
             ViewBag.PhoneNumber = "PhoneNumber_DSC";
-;
-            var usersFinded = await UserService.GetUsersShort();
-            var users = MapUsers(usersFinded);
 
-            return View(users.OrderBy(o => o.FirstName).ToList());
+            return View(await GetUsersAsync());
         }
 
-        public async Task<ActionResult> FindUsersAjax(string search)
+        public async Task<ActionResult> GetUsersAjax(string search, string sort)
         {
-            var usersFinded = await UserService.GetUsersShort(search);
-            var users = MapUsers(usersFinded);           
+            ViewBag.FirstName = sort == "FirstName_DSC" ? "FirstName" : "FirstName_DSC";
+            ViewBag.LastName = sort == "LastName_DSC" ? "LastName" : "LastName_DSC";
+            ViewBag.Email = sort == "Email_DSC" ? "Email" : "Email_DSC";
+            ViewBag.PhoneNumber = sort == "PhoneNumber_DSC" ? "PhoneNumber" : "PhoneNumber_DSC";         
 
-            return PartialView("_UsersTable", users);
+            return PartialView("_UsersTable", await GetUsersAsync(search, sort));
         }
 
-        public async Task<ActionResult> SortUsersAjax(string sort)
+        private async Task<UsersModel> GetUsersAsync(string search = "", string sort = "")
         {
-            ViewBag.FirstName = sort == "FirstName" ? "FirstName_DSC" : "FirstName";
-            ViewBag.LastName = sort == "LastName" ? "LastName_DSC" : "LastName";
-            ViewBag.Email = sort == "Email" ? "Email_DSC" : "Email";
-            ViewBag.PhoneNumber = sort == "PhoneNumber" ? "PhoneNumber_DSC" : "PhoneNumber";         
-         
-            var usersFinded = await UserService.GetUsersShort("", sort);
-            var users = MapUsers(usersFinded);
-
-            return PartialView("_UsersTable", users);
-        }
-
-        private List<DetailModel> MapUsers(List<UserShortDTO> users)
-        {
-            var sortUsers = new List<DetailModel>();
-            foreach (var user in users)
+            var users = new List<DetailModel>();
+            var usersFinded = await UserService.GetUsersShort(search, sort);          
+            foreach (var user in usersFinded)
             {
-                sortUsers.Add(new DetailModel
+                users.Add(new DetailModel
                 {
                     Id = user.Id,
                     Email = user.Email,
@@ -67,8 +54,12 @@ namespace AspNet5Identity.WEB.Controllers
                     AboutMe = user.AboutMe
                 });
             }
-            return sortUsers;
-        }
 
+            return new UsersModel
+            {
+                Search = search,
+                Users = users
+            };
+        }
     }
 }

@@ -182,6 +182,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\DetailModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

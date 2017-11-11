@@ -1,22 +1,22 @@
-﻿@model IEnumerable<AspNet5Identity.WEB.Models.DetailModel>
+﻿@model AspNet5Identity.WEB.Models.UsersModel
 
 <table class="table">
 
     <thead>
         <tr>
-            <th>@Ajax.ActionLink("First name", "SortUsersAjax", new { sort = ViewBag.FirstName }, 
+            <th>@Ajax.ActionLink("First name", "GetUsersAjax", new { search = Model.Search, sort = ViewBag.FirstName }, 
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-            <th>@Ajax.ActionLink("Last name", "SortUsersAjax", new { sort = ViewBag.LastName }, 
+            <th>@Ajax.ActionLink("Last name", "GetUsersAjax", new { search = Model.Search, sort = ViewBag.LastName },
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-            <th>@Ajax.ActionLink("Email", "SortUsersAjax", new { sort = ViewBag.Email },
+            <th>@Ajax.ActionLink("Email", "GetUsersAjax", new { search = Model.Search, sort = ViewBag.Email },
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
-            <th>@Ajax.ActionLink("Phone number", "SortUsersAjax", new { sort = ViewBag.PhoneNumber },
+            <th>@Ajax.ActionLink("Phone number", "GetUsersAjax", new { search = Model.Search, sort = ViewBag.PhoneNumber },
                new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "users-table" })</th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in (Model as AspNet5Identity.WEB.Models.UsersModel).Users)
         {
             <tr>
                 <td>@Html.DisplayFor(m => item.FirstName)</td>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AspNet5Identity.WEB.Models.DetailModel>
+﻿@model AspNet5Identity.WEB.Models.UsersModel
 
 @{
     ViewBag.Title = "Users";
@@ -7,7 +7,7 @@
 <h2>Users</h2>
 <hr />
 
-@using (Ajax.BeginForm("FindUsersAjax", new AjaxOptions { UpdateTargetId = "users-table" }))
+@using (Ajax.BeginForm("GetUsersAjax", new AjaxOptions { UpdateTargetId = "users-table" }))
 {
     <div>
         <div class="form-group">
